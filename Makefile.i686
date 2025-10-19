@@ -14,7 +14,7 @@ $(BUILD)/%.o: src/%.cpp
 
 all: $(BUILD)/kernel.bin
 
-$(BUILD)/boot.o: src/boot.s
+$(BUILD)/boot.o: src/boot.i686.s
 	mkdir -p $(BUILD)
 	i686-elf-as $< -o $@
 

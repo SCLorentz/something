@@ -1,0 +1,25 @@
+SRC := $(shell find src -name "*.cpp")
+BUILD := build
+CC := riscv64-unknown-elf-g++
+CFLAGS := -ffreestanding -O2 -Wall -Wextra -fno-exceptions -fno-rtti
+LDFLAGS := -T linker.ld -ffreestanding -O2 -nostdlib -lgcc
+
+# gera os objetos correspondentes em build/
+CPP_OBJECTS := $(patsubst src/%.cpp,$(BUILD)/%.o,$(SRC))
+
+# regra genérica de compilação
+$(BUILD)/%.o: src/%.cpp
+	mkdir -p $(dir $@)
+	$(CC) -c $< -o $@ $(CFLAGS)
+
+all: $(BUILD)/kernel.bin
+
+$(BUILD)/boot.o: src/boot.s
+	mkdir -p $(BUILD)
+	riscv64-unknown-elf-as $< -o $@
+
+$(BUILD)/kernel.bin: $(BUILD)/boot.o $(CPP_OBJECTS)
+	$(CC) $(LDFLAGS) -o $@ $^
+
+clean:
+	rm -rf $(BUILD)
