@@ -2,8 +2,8 @@
 #define _STD_H
 
 #pragma once
-#include "std/vga.h"
-#include "std/std.h"
-#include "std/term.h"
+#include "std/i686/vga.h"
+#include "std/utils.h"
+#include "std/i686/term.h"
 
 #endif

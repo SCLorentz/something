@@ -6,7 +6,7 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include "vga.h"
-#include "std.h"
+#include "../utils.h"
 
 extern size_t terminal_row;
 extern size_t terminal_column;
