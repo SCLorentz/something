@@ -1,1 +1,0 @@
-// https://florian.noeding.com/posts/risc-v-toy-cpu/cpu-from-scratch/

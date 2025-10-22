@@ -2,7 +2,7 @@ SRC := $(shell find src -name "*.cpp")
 BUILD := build
 CC := riscv64-unknown-elf-g++
 CFLAGS := -ffreestanding -O2 -Wall -Wextra -fno-exceptions -fno-rtti
-LDFLAGS := -T linker.ld -ffreestanding -O2 -nostdlib -lgcc
+LDFLAGS := -T linker/linker.riscv.ld -ffreestanding -O2 -nostdlib -lgcc
 
 # gera os objetos correspondentes em build/
 CPP_OBJECTS := $(patsubst src/%.cpp,$(BUILD)/%.o,$(SRC))
