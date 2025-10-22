@@ -14,7 +14,7 @@ $(BUILD)/%.o: src/%.cpp
 
 all: $(BUILD)/kernel.bin
 
-$(BUILD)/boot.o: src/boot.s
+$(BUILD)/boot.o: src/boot.riscv.s
 	mkdir -p $(BUILD)
 	riscv64-unknown-elf-as $< -o $@
 
